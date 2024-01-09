@@ -2,6 +2,8 @@
 
 This project, created by Taha Mohamad, is for the take-home assignment given by Simbie Health's team for their Product Engineering role.
 
+Version 2 has significant QoL improvements from the basic requirements of V1, details below.
+
 ## Project Details
 **Frontend packages:** NextJS, NextUI, React, Supabase-Auth-Helpers
 
@@ -61,114 +63,28 @@ This project, created by Taha Mohamad, is for the take-home assignment given by 
     4. start NextJS project
 </details>
 
-## Version 1.0
-This is the first branch of my submission for Simbie Health. While a more details task/goal list is provided below, the summarized core product features completed are available below.
+## Version 2.0
 
-- Users can create and login as patients or providers.
-- Patients can initiate a conversation with provider.
-- Providers can choose to accept or reject a conversation with patient(s) before sending a message.
-- Chat database accurately stores latest conversation and messages for each user.
+Task/Goal List, first-depth is categories of updates, second depth is actual tasks listed by priority / necessary order
 
-<details>
-<summary>Task/Goal List</summary>
-<ul>
-    <li><input type="checkbox" checked disabled> Landing page for anyone who visits the website</li>
-    <li><input type="checkbox" checked disabled> Account creation/signup pages, separated by Provider or Patient</li>
-    <li><input type="checkbox" checked disabled> Supabase project setup</li>
-    <li><input type="checkbox" disabled> Supabase auth
-        <ul>
-            <li><input type="checkbox" checked disabled> Middleware.tsx that verifies user's auth w/ Supabase project</li>
-            <li><input type="checkbox" checked disabled> Middleware.tsx properly redirects users from protected pages depending on auth and provider/patient role</li>
-            <li><input type="checkbox" checked disabled> Account creation and login properly verifies with Supabase and stores session in browser client</li>
-            <li><input type="checkbox" checked disabled> User can logout + session cookies fully removed from client side</li>
-            <li><input type="checkbox" disabled> Forgot password</li>
-            <li><input type="checkbox" disabled> Verify email on account creation</li>
-        </ul>
-    </li>
-    <li><input type="checkbox" disabled> Supabase Database
-        <ul>
-            <li><input type="checkbox" checked disabled> Created 'chat' table for storing conversations between provider and patient</li>
-            <li><input type="checkbox" disabled> Implemented separate profile tables for patients and providers</li>
-            <li><input type="checkbox" disabled> Implemented actual roles between providers and patients for RLS (currently just checks if user metadata for patient/provider status)</li>
-        </ul>
-    </li>
-    <li><input type="checkbox" disabled> Chat UI & functions
-        <ul>
-            <li><input type="checkbox" checked disabled> Patient can create chat with provider with providerID
-                <ul>
-                    <li><input type="checkbox" checked disabled> New chat is successfully created in database</li>
-                    <li><input type="checkbox" checked disabled> Patients can view all chats in the database such that their user_id matches column 'patient_id'</li>
-                    <li><input type="checkbox" checked disabled> After first patient message, conversation cannot continue without approval/response from provider</li>
-                </ul>
-            </li>
-            <li><input type="checkbox" checked disabled> Providers can view chats and message requests
-                <ul>
-                    <li><input type="checkbox" checked disabled> Providers can 'accept' message requests, initiating full conversation UI between patient and provider</li>
-                    <li><input type="checkbox" checked disabled> New patient and provider messages in existing conversations are properly reflected in database</li>
-                </ul>
-            </li>
-            <li><input type="checkbox" checked disabled> On load or refresh, messages UI updates with latest convos and messages from users
-                <ul>
-                    <li><input type="checkbox" checked disabled> User can switch between conversations via UI</li>
-                    <li><input type="checkbox" checked disabled> UI updates with latest conversation messages as selected by UI</li>
-                    <li><input type="checkbox" disabled> Messages UI has real-time link with chats database.
-                        <ul>
-                            <li><input type="checkbox" disabled> New chats and messages load instantly on user application, do not require refresh</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><input type="checkbox" disabled> Quality of life upgrades (these will be the goals for version 2.0)
-        <ul>
-            <li><input type="checkbox" disabled> First-time login - profile updates
-                <ul>
-                    <li><input type="checkbox" disabled> Patients can update their profile with medical information
-                        <ul>
-                            <li><input type="checkbox" disabled> Supabase profile table updated to reflect this</li>
-                        </ul>
-                    </li>
-                    <li><input type="checkbox" disabled> Providers can update their profile with specialties (i.e. Mental health, hormonal, reproductive, etc.)
-                        <ul>
-                            <li><input type="checkbox" disabled> Supabase provider profile table updates to reflect this</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><input type="checkbox" disabled> New UI for starting conversations
-                <ul>
-                    <li><input type="checkbox" disabled> Patients first categorize/choose an issue</li>
-                    <li><input type="checkbox" disabled> Patients can choose from live-updated list of providers whose profiles match that category/specialty/issue</li>
-                    <li><input type="checkbox" disabled> Additional filtering by state/insurances accepted</li>
-                </ul>
-            </li>
-            <li><input type="checkbox" disabled> Real-time conversation and chat updates
-                <ul>
-                    <li><input type="checkbox" disabled> UI reflects messages or conversations unread by user</li>
-                </ul>
-            </li>
-            <li><input type="checkbox" disabled> Additional formats for conversation
-                <ul>
-                    <li><input type="checkbox" disabled> Update message format table to enable additional formats</li>
-                    <li><input type="checkbox" disabled> Implement Supabase storage API for saving media</li>
-                    <li><input type="checkbox" disabled> Users can attach images/items</li>
-                    <li><input type="checkbox" disabled> Voice messages
-                        <ul>
-                            <li><input type="checkbox" disabled> Voice messages are auto transcribed</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><input type="checkbox" disabled> Additional sections for a 'full platform'
-                <ul>
-                    <li><input type="checkbox" disabled> UI for patients to make appointments with providers</li>
-                    <li><input type="checkbox" disabled> Provider availability stored in database (linked to appointment creation UI)</li>
-                    <li><input type="checkbox" disabled> Providers can see all their upcoming appointments and accept/deny appointment requests</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-</details>
+- [ ] Chat realtime update
+  - [ ] Chat messages UI updates in real time
+  - [ ] Track read v. unread messages in database
+  - [ ] Reflect read v. unread messages in UI
+- [ ] User profile
+  - [ ] Create unique tables for patient v. provider profiles
+    - [ ] Patient table w/ name, DoB, json for health data, location, insurance provider
+    - [ ] Provider table w/ name, education/licensing, specialties, bio, states practiced in
+  - [ ] UI for viewing and editing profile
+    - [ ] View pulls profile data from Supabase DB
+    - [ ] Edit updates existing row of profile data from Supabase DB
+  - [ ] Automatically guide new users to profile update after signup/first login
+- [ ] Revamped chat UI
+  - [ ] Patients can view providers and select one before initiating new chat
+    - [ ] Provider search functions that pull latest list of providers from DB
+    - [ ] Reusable UI component
+  - [ ] Chat previews (in list) show peer's name (not ID) and most recent message
+- [ ] Scaffolding more features
+  - [ ] Appointments page
+    - [ ] Schedule a new appointment UI component
+    - [ ] Calendar/list of appointments

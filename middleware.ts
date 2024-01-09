@@ -45,5 +45,5 @@ export async function middleware(req: NextRequest) {
 
 // This is all the subpages that trigger this middleware before load
 export const config = {
-  matcher: ['/', '/signin', '/patient', '/provider'],
+  matcher: ['/', '/signin', '/patient/:path*', '/provider/:path*'],
 }
