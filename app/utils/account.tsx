@@ -12,6 +12,19 @@ import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Database } from '@/types/supabase'
 
+export async function getUserProfile(isPatient: boolean) {
+    const cookieStore = cookies()
+    const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
+
+    const { data: {user} } = await supabase.auth.getUser();
+
+    if (user) {
+        const { data: patient } = await supabase.from(isPatient ? 'patient_profiles' : 'provider_profiles').select().eq('id', user.id)
+        return patient  
+    }
+    return null
+}
+
 // Simple function that returns patient or provider if the user is logged in, null otherwise
 export default async function isUserLoggedIn() {
     const cookieStore = cookies()

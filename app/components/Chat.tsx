@@ -12,9 +12,15 @@ Next steps include implementing real-time updates from the chats DB to client-si
 
 */
 
+/*
+
+Code commented out, see RealTimeChat.tsx for current implementation
+
 import { Button, Card, CardHeader, CardBody, CardFooter, Input, Textarea, Divider, Modal, ModalHeader, ModalBody, ModalFooter, useDisclosure, ModalContent, Spinner, ScrollShadow } from '@nextui-org/react'
 import { useEffect, useState } from 'react';
 import { providerAcceptsChat, ChatPreview, ChatMessage, getChatLog, createNewChat, getLatestChats, newChatMessage } from '../utils/chat_utils';
+import { Database } from '@/types/supabase';
+import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 // Modal for creating new chat
 function NewChatModal({isPatient, isOpen, onOpenChange} : {isPatient: boolean, isOpen: boolean, onOpenChange: (open: boolean) => void}) {
@@ -22,7 +28,7 @@ function NewChatModal({isPatient, isOpen, onOpenChange} : {isPatient: boolean, i
     const [providerID, setProviderID] = useState<string>(''); // this is set as providerID because conversations are started from patient only, so we already have patientID for creating this conversation/message
     const [message, setMessage] = useState<string>('');
 
-    // Attempts to push chat to database
+    // Attempts to push c hat to database
     const pushChat = async () => {
         setLoading(true);
         const data = await createNewChat(message, providerID); // server-side function
@@ -174,6 +180,21 @@ function ChatView({chat, isPatient} : {chat: ChatPreview | null, isPatient: bool
     )
 }
 
+function RealtimeChatList({openMessageModal, chatList, currentChat, updateCurrentChat, isPatient} : {openMessageModal: () => void, chatList : ChatPreview[],currentChat: ChatPreview | null, updateCurrentChat: Function, isPatient: boolean}) {
+    return (
+        <Card className='w-fit min-w-[200px] h-full' radius="none">
+            {isPatient && <Divider/>}
+            <CardBody className='flex flex-col gap-2'>
+                {chatList.map((chat) => (
+                    <Button isDisabled={currentChat == chat} key={isPatient ? chat.providerID : chat.patientID} className='text-left justify-start p-8' color='primary' variant='faded' onPress={() => {updateCurrentChat(chat)}}>
+                        <a className='text-lg'>{isPatient ? chat.providerName : chat.patientName}<br/><span className='text-sm'>{(isPatient ? chat.providerID : chat.patientID).slice(0, 5)}</span></a>
+                    </Button>
+                ))}
+            </CardBody>
+        </Card>
+    )
+}
+
 // While PatientChat and ProviderChat are very similar, they are separate components because they are rendered on different pages.
 // On top of that, this allows for implementing different features between Provider and Patients
 export function PatientChat() {
@@ -258,4 +279,4 @@ export function ProviderChat() {
         </Card>
     )
 }
-
+*/
