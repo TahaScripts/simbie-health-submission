@@ -7,6 +7,15 @@ This project, created by Taha Mohamad, is for the take-home assignment given by 
 
 **Backend packages:** Supabase CLI, Docker Desktop
 
+1. Run npm install
+2. Install supabase CLI globally (https://supabase.com/docs/guides/cli)
+3. Install Docker Desktop (https://docs.docker.com/desktop/)
+4. Run npx supabase start to launch Supabase instance on local DB. This should provide you with credentials for connecting to your local Supabase instance. Save those credentials.
+   1. NOTE: Make sure that your supabase uses the migration in supabase/migrations/20240111061513_realtime_chat_compatible.sql. See supabase CLI docs for more info.
+5. Create a .env.local file and paste in two environment variables. (NEXT_PUBLIC_SUPABASE_URL = API_URL) (NEXT_PUBLIC_SUPABASE_ANON_KEY = anon_key)
+6. Make sure your supabase instance is properly running without error via npx supabase start.
+7. Run npm run dev
+
 <details>
 <summary>Folder Structure</summary>
 <ul>
@@ -53,13 +62,6 @@ This project, created by Taha Mohamad, is for the take-home assignment given by 
 </ul>
 </details>
 
-<details>
-    <summary>How to Install + Run</summary>
-    1. env variables
-    2. npm add packages
-    3. start Supabase local server
-    4. start NextJS project
-</details>
 
 ## Version 1.0
 This is the first branch of my submission for Simbie Health. While a more details task/goal list is provided below, the summarized core product features completed are available below.
