@@ -19,8 +19,11 @@ export async function getUserProfile(isPatient: boolean) {
     const { data: {user} } = await supabase.auth.getUser();
 
     if (user) {
-        const { data: patient } = await supabase.from(isPatient ? 'patient_profiles' : 'provider_profiles').select().eq('id', user.id)
-        return patient  
+        const { data, error, status } = await supabase.from(isPatient ? 'patient_profiles' : 'provider_profiles').select().eq('id', user.id)
+        console.log(data, error, status);
+        if (data) {
+            return data[0]
+        }
     }
     return null
 }

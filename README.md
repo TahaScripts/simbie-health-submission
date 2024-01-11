@@ -8,6 +8,8 @@ This also includes an updated supabase instance with a new `seed.sql` that pre-p
 
 Database is also updated with a few role policies and additional tables.
 
+Note: the only real bugs I've seen are on live-updating of chat messages from database. The updates are triggered, I just have to optimize the client-side state variables and triggering React's re-render lifecycle. Please refresh if a chat doesn't seem to update.
+
 ## Project Details
 
 **Frontend packages:** NextJS, NextUI, React, Supabase-Auth-Helpers
@@ -16,13 +18,14 @@ Database is also updated with a few role policies and additional tables.
 
 **HOW TO RUN**
 1. Run `npm install`
-    2. Install supabase CLI globally (https://supabase.com/docs/guides/cli)
-    3. Install Docker Desktop (https://docs.docker.com/desktop/)
-    4. Run `npx supabase start` to launch Supabase instance on local DB. This should provide you with credentials for connecting to your local Supabase instance. Save those credentials.
-    5. Create a .env.local file and paste in two environment variables. (NEXT_PUBLIC_SUPABASE_URL = API_URL) (NEXT_PUBLIC_SUPABASE_ANON_KEY = anon_key)
-    6. Make sure your supabase instance is properly running without error via `npx supabase start`.
-    7. Run npm run dev
-    8. See `/supabase/seed.sql` for pre-generated account name, email, and passwords. Password for all pre-generated acounts are `testing1234`
+2. Install supabase CLI globally (https://supabase.com/docs/guides/cli)
+3. Install Docker Desktop (https://docs.docker.com/desktop/)
+4. Run `npx supabase start` to launch Supabase instance on local DB. This should provide you with credentials for connecting to your local Supabase instance. Save those credentials.
+   1. NOTE: Make sure that your supabase uses the migration in `supabase/migrations/20240111061513_realtime_chat_compatible.sql`. See supabase CLI docs for more info.
+5. Create a .env.local file and paste in two environment variables. (NEXT_PUBLIC_SUPABASE_URL = API_URL) (NEXT_PUBLIC_SUPABASE_ANON_KEY = anon_key)
+6. Make sure your supabase instance is properly running without error via `npx supabase start`.
+7. Run npm run dev
+8. See `/supabase/seed.sql` for pre-generated account name, email, and passwords. Password for all pre-generated acounts are `testing1234`
 
 <details>
 <summary>Folder Structure</summary>

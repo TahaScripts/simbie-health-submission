@@ -42,30 +42,6 @@ export interface Database {
         }
         Relationships: []
       }
-      messages: {
-        Row: {
-          conversation_id: number
-          message: string
-          order: number
-          sender_id: string
-          time: string
-        }
-        Insert: {
-          conversation_id?: number
-          message: string
-          order?: number
-          sender_id: string
-          time: string
-        }
-        Update: {
-          conversation_id?: number
-          message?: string
-          order?: number
-          sender_id?: string
-          time?: string
-        }
-        Relationships: []
-      }
       patient_profiles: {
         Row: {
           date_of_birth: string | null

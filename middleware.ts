@@ -24,7 +24,10 @@ export async function middleware(req: NextRequest) {
 
   // If the user is not logged in, and the current URL includes '/patient/' or '/provider/' then redirect to the login page
   if (!user && (req.nextUrl.pathname.includes('/patient') || req.nextUrl.pathname.includes('/provider'))) {
-    return NextResponse.redirect(new URL('/signin', req.url))
+    // return new url such that /signin includes ?u= patient or provider
+    const url = new URL('/signin', req.url)
+    url.searchParams.append('u', req.nextUrl.pathname.includes('/patient') ? 'patient' : 'provider')
+    return NextResponse.redirect(url)
   } else if (user) {
     const isPatient = user.user_metadata.is_patient;
 
