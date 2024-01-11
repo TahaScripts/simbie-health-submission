@@ -40,6 +40,7 @@ export function ProviderNav() {
             <CardBody>
                 <Button isDisabled={loading || pathname == '/provider'} className="flex justify-start" as={Link} href='/patient' color='primary' variant='light'>Portal Home</Button>
                 <Button isDisabled={loading || pathname == '/provider/messages'} className="flex justify-start"  as={Link} href='/provider/messages' color='primary' variant='light'>Messages</Button>
+                <Button isDisabled={loading || pathname == '/provider/account'} className="flex justify-start"  as={Link} href='/provider/account' color='primary' variant='light'>Account</Button>
             </CardBody>
             <CardFooter>
                 <Button fullWidth isDisabled={loading} color="danger" variant='ghost' className='' onPress={logoutCurrentUser}>Logout</Button>
@@ -73,6 +74,7 @@ export function PatientNav() {
             <CardBody>
                 <Button isDisabled={loading || pathname == '/patient'} className="flex justify-start" as={Link} href='/patient' color='primary' variant='light'>Portal Home</Button>
                 <Button isDisabled={loading || pathname == '/patient/messages'} className="flex justify-start"  as={Link} href='/patient/messages' color='primary' variant='light'>Messages</Button>
+                <Button isDisabled={loading || pathname == '/patient/account'} className="flex justify-start"  as={Link} href='/patient/account' color='primary' variant='light'>Account</Button>
             </CardBody>
             <CardFooter>
                 <Button fullWidth isDisabled={loading} color="danger" variant='ghost' className='' onPress={logoutCurrentUser}>Logout</Button>

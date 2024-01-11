@@ -2,10 +2,10 @@
   This is the provider-messages section of the application.
 */
 
-import {ProviderChat} from "@/app/components/Chat";
+import { RealtimeChat } from "@/app/components/RealtimeChat";
 
 export default function ProviderMessages() {
   return (
-      <ProviderChat/>
+      <RealtimeChat isPatient={false}/>
   )
 }
