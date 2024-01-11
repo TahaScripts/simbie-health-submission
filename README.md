@@ -86,11 +86,11 @@ Task/Goal List, first-depth is categories of updates, second depth is actual tas
     - [x] View pulls profile data from Supabase DB
     - [ ] Edit updates existing row of profile data from Supabase DB
   - [ ] Automatically guide new users to profile update after signup/first login
-- [ ] Revamped chat UI
-  - [ ] Patients can view providers and select one before initiating new chat
-    - [ ] Provider search functions that pull latest list of providers from DB
-    - [ ] Reusable UI component
-  - [ ] Chat previews (in list) show peer's name (not ID) and most recent message
+- [x] Revamped chat UI
+  - [x] Patients can view providers and select one before initiating new chat
+    - [x] Provider search functions that pull latest list of providers from DB
+    - [x] Reusable UI component
+  - [x] Chat previews (in list) show peer's name (not ID) and most recent message
 - [ ] Scaffolding more features
   - [ ] Appointments page
     - [ ] Schedule a new appointment UI component
